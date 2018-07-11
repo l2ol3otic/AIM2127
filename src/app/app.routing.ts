@@ -8,6 +8,6 @@ const RouterLink:Routes = [
     {path: '', redirectTo: AppURL.Login, pathMatch: 'full'},
     {path: AppURL.Login,component: LoginComponent },
     {path: AppURL.Register,component: RegisterComponent },
-    //{path: AppURL.Authen, loadChildren:'./authentication/authentication.module#AuthenticationModule'}
+    {path: AppURL.Authen, loadChildren:'./authentication/authentication.module#AuthenticationModule'}
 ];
 export const AppRouting = RouterModule.forRoot(RouterLink);

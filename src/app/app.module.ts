@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AppRouting } from './app.routing';
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule, FormsModule } from '../../node_modules/@angular/forms';
+import { SharedsModule } from './shareds/shareds.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ReactiveFormsModule, FormsModule } from '../../node_modules/@angular/fo
     BrowserModule,
     AppRouting,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SharedsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
