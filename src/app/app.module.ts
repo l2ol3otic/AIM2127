@@ -6,6 +6,7 @@ import { AppRouting } from './app.routing';
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule, FormsModule } from '../../node_modules/@angular/forms';
 import { SharedsModule } from './shareds/shareds.module';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SharedsModule } from './shareds/shareds.module';
     AppRouting,
     ReactiveFormsModule,
     FormsModule,
-    SharedsModule
+    SharedsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

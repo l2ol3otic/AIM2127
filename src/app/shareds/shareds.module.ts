@@ -5,13 +5,15 @@ import { AuthSidebarComponent } from './Components/auth-sidebar/auth-sidebar.com
 import { AuthContentComponent } from './Components/auth-content/auth-content.component';
 import { ReactiveFormsModule, FormsModule } from '../../../node_modules/@angular/forms';
 import { RouterModule } from '../../../node_modules/@angular/router';
+import { AlertService } from './services/alert.service';
+import { AccountService } from './services/account.service';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [
     AuthNavbarComponent, 
@@ -24,6 +26,11 @@ import { RouterModule } from '../../../node_modules/@angular/router';
     AuthContentComponent,
     ReactiveFormsModule,
     FormsModule
+  ],
+  providers: [
+    AlertService,
+    AccountService
   ]
+  
 })
 export class SharedsModule { }

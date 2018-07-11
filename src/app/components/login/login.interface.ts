@@ -5,3 +5,7 @@ export interface IloginComponent{
     form: FormGroup
     onSubmit(): void; 
 }
+export interface Ilogin {
+    username: string,
+    password: string,
+}
