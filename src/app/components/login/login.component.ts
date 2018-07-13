@@ -24,17 +24,18 @@ export class LoginComponent implements IloginComponent {
   form: FormGroup
   //ขเ้าสู่ระบบ
   onSubmit(): void {
-    console.log(this.form.value);
     if(this.form.invalid){
       console.log("error")
       return this.alert.notify("ผู้ใช้หรือรหัสผ่านไม่ถูกต้อง !!")
       
     }else{
+      
       this.account
       .onLogin(this.form.value)
-      .then(res => console.log(res))
-      .catch(err => this.alert.notify(err.Message))
+      // .then()
+      // .catch(err => this.alert.notify(err.Message))
       this.router.navigate(['/', AppURL.Authen])
+      
     }
     
   }

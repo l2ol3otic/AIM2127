@@ -5,15 +5,24 @@ import { HttpService } from "../../services/http.service";
 
 @Injectable()
 export class AccountService {
+
+    public y:any
+
     constructor(
         private http:HttpService
+        
     ){
 
     }
     onLogin(model: Ilogin){
-        return new Promise((resolve,reject) => {
-            resolve(model);
-            //reject({Message:'Error2'})
-        })
+        //return this.http.AuthenticationLogin(model.username,model.password)
+        //  return new Promise((resolve,reject) => {
+        //   resolve(model);
+        //     //reject({Message:'Error2'})
+        //  })
+
+        console.log(model)
+        //return this.http.requestPost('/login',model).toPromise() as Promise<{accessToken: string}>
+        return this.http.requestPost('/login',model)
     }
 }
