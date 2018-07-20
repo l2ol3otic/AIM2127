@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { AssetlistComponent } from './assetlist/assetlist.component';
 import { AssetprocessComponent } from './assetprocess/assetprocess.component';
 import { AsseteditComponent } from './assetedit/assetedit.component';
+import { SharedsModule } from '../../../shareds/shareds.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    SharedsModule,
   ],
   declarations: [AssetlistComponent, AssetprocessComponent, AsseteditComponent]
 })

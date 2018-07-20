@@ -1,7 +1,9 @@
 import { Injectable } from "../../../node_modules/@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { BehaviorSubject } from 'rxjs';
 import { AlertService } from "../shareds/services/alert.service";
+import { catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -22,7 +24,7 @@ export class HttpService {
    
 
     //Post everything
-    requestPost(url: string , body: any) {
+    requestPost2(url: string , body: any) {
 
         console.log('Body',body)
          return this.http.post(`${this.address}${url}`, {
@@ -39,9 +41,22 @@ export class HttpService {
         });
 
     }
+    //Post For login
+    requestPost(url: string, body: any, accessToken?: string) {
+        return this.http
+            .post(`${this.address}${url}`, {email:body.username,password:body.password}, {
+                headers: this.appendHeaders(accessToken)
+                  
+            })
+            .pipe(catchError(err => this.handelError(err)));
+    }
     //Get everything
-    requestGet(url: string) {
-        //return this.http.get('${this.address}${url}')
+    requestGet(url: string,accessToken:string) {
+        return this.http
+            .get(`${this.address}${url}`, {
+                headers: this.appendHeaders(accessToken)
+            })
+            .pipe(catchError(err => this.handelError(err)));
     }
     AuthenticationLogin(email: string, password: string) {
 
@@ -57,6 +72,14 @@ export class HttpService {
             this.loggedIn.next(undefined);
             errorResp.error ? this.alert.notify(errorResp.error.errorMessage) : this.alert.notify('An unknown error has occured.');
         });
+
+    }
+    AuthenticationLogin2(email: string, password: string) {
+
+        this.http.post(this.address + '/login', {
+            email: email,
+            password: password
+        }).toPromise()
 
     }
     getToken(): string {
@@ -82,6 +105,18 @@ export class HttpService {
             headersConfig['Authorization'] = `Token ${this.getToken()}`;
         }
         return new HttpHeaders(headersConfig);
+    }
+    // เพิ่ม header
+    private appendHeaders(accessToken) {
+        const headers = {}; 
+        if (accessToken) headers['Authorization'] = `Bearer ${accessToken}`;
+        return new HttpHeaders(headers);
+    }
+    private handelError(errResponse: HttpErrorResponse): Observable<any> {
+        errResponse['Message'] = errResponse.message;
+        if (errResponse.error && errResponse.error.message)
+            errResponse['Message'] = errResponse.error.message;
+        throw errResponse;
     }
 
 
