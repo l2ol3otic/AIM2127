@@ -23,7 +23,28 @@
                     <i class="fa fa-list"></i> รายการข้อมูลสมาชิก
                 </h3>   
             </div>
-    
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>รหัสทรัพย์สิน</th>
+                            <th>ประเภททรัพย์สิน</th>
+                            <th>ผู้รับผิดชอบ</th>
+                            <th>แแผนก</th>
+                            <th>สถานะ</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th colspan="6">
+                                จำนวนทรัพย์สินทั้งหมด 0 รายการ
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <pagination previousText="หน้าก่อนหน้า" nextText="หน้าถัดไป" [totalItems]="30"></pagination>
+            </div>
         </div>
     </div>
 </div>

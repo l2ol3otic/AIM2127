@@ -7,6 +7,7 @@ import { ReactiveFormsModule, FormsModule } from '../../../node_modules/@angular
 import { RouterModule } from '../../../node_modules/@angular/router';
 import { AlertService } from './services/alert.service';
 import { AccountService } from './services/account.service';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { AccountService } from './services/account.service';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
+    PaginationModule.forRoot()
   ],
   declarations: [
     AuthNavbarComponent, 
@@ -25,7 +27,8 @@ import { AccountService } from './services/account.service';
     AuthSidebarComponent,
     AuthContentComponent,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    PaginationModule
   ],
   providers: [
     AlertService,
